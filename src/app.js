@@ -11,4 +11,5 @@ app.use(cors());
 // Auth routes
 app.use("/api/auth", require("./routes/auth.routes"));
 
+
 module.exports = app;
