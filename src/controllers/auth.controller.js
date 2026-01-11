@@ -29,4 +29,26 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { login };
+
+const getProfile = async (req, res) => {
+  try {
+    // req.user comes from auth.middleware after token validation
+    const user = req.user;
+
+    return res.status(200).json({
+      success: true,
+      message: "Profile fetched successfully",
+      data: {
+        id: user.id,
+        email: user.email
+      },
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+    });
+  }
+}
+
+module.exports = { login, getProfile };
